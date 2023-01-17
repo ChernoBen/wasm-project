@@ -7,6 +7,11 @@ init().then(_=>{
         const content = img_resize("./mario.png");
         console.log(typeof content);
     }catch(error){
-        console.error(error);
+        if (error){
+            console.error(error);
+        }else{
+            console.log("kd o erro???")
+        }
+        
     }
 });

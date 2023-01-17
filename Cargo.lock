@@ -1176,6 +1176,17 @@ dependencies = [
 ]
 
 [[package]]
+name = "try-catch"
+version = "0.2.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "f8ac07b511057dbab5380dbd9be97b8375c577136d45db42b63d039c83e54630"
+dependencies = [
+ "proc-macro2",
+ "quote",
+ "syn",
+]
+
+[[package]]
 name = "try-lock"
 version = "0.2.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1250,6 +1261,7 @@ dependencies = [
  "reqwest",
  "resize",
  "rgb",
+ "try-catch",
  "wasm-bindgen",
  "wee_alloc",
 ]
