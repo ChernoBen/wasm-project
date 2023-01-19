@@ -1,7 +1,6 @@
 /* tslint:disable */
 /* eslint-disable */
 export const memory: WebAssembly.Memory;
-export function hello(a: number, b: number): void;
 export function new_resizer(a: number, b: number, c: number, d: number, e: number): void;
 export function watermark(a: number, b: number, c: number, d: number): void;
 export function blend(a: number, b: number, c: number, d: number): void;

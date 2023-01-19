@@ -1,10 +1,6 @@
 /* tslint:disable */
 /* eslint-disable */
 /**
-* @param {string} text
-*/
-export function hello(text: string): void;
-/**
 * @param {Uint8Array} source_img
 * @param {number} wdth
 * @param {number} hgth
@@ -2554,7 +2550,6 @@ export type InitInput = RequestInfo | URL | Response | BufferSource | WebAssembl
 
 export interface InitOutput {
   readonly memory: WebAssembly.Memory;
-  readonly hello: (a: number, b: number) => void;
   readonly new_resizer: (a: number, b: number, c: number, d: number, e: number) => void;
   readonly watermark: (a: number, b: number, c: number, d: number) => void;
   readonly blend: (a: number, b: number, c: number, d: number) => void;
