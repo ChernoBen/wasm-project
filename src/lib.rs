@@ -18,8 +18,8 @@ pub fn hello(text:&str){
 //source_img: &[u8]
 pub fn new_resizer(source_img: &[u8],wdth:u32,hgth:u32)->Result<PhotonImage,JsError>{
     let  content = photon_rs::native::open_image_from_bytes(source_img).unwrap();
-    let test = photon_rs::transform::resize(&content, wdth,hgth, photon_rs::transform::SamplingFilter::Gaussian);
-    Ok(test)
+    let resized_img = photon_rs::transform::resize(&content, wdth,hgth, photon_rs::transform::SamplingFilter::Gaussian);
+    Ok(resized_img)
 }
 
 #[wasm_bindgen]
