@@ -1,4 +1,4 @@
 #!/bin/bash
-wasm-pack build --target web 
-cd www
-npm run dev
+wasm-pack build --target bundler
+cd pkg && npm link && cd ..
+cd www && npx webpack build

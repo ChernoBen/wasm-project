@@ -17,6 +17,7 @@ try-catch = "0.2.2"
 js-sys = "0.3.60"
 web-sys = "0.3.60"
 photon-rs = "0.3.1"
+console_error_panic_hook = "0.1.7"
 
 [lib]
 crate-type = ["cdylib"]
