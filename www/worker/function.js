@@ -3833,21 +3833,12 @@ var wasm_bg = __webpack_require__(891);
 
 
 
-//const wasm_m = fetch(wasm).then(response=>init(response.arrayBuffer()));
-
 async function get_img_uint8(){
-    const img = await fetch("https://cdn.pixabay.com/photo/2017/09/01/00/15/png-2702691_1280.png");
-    const blolb = await img.blob();
-    const array_buff = await blolb.arrayBuffer();
-    return new Uint8Array(array_buff);
-}
 
-function convert_to_uint8_array(byteCharacters){
-    const byteNumbers = new Array(byteCharacters.length);
-    for (let i = 0; i < byteCharacters.length; i++) {
-        byteNumbers[i] = byteCharacters.charCodeAt(i);
-    }
-    return new Uint8Array(byteNumbers);
+  const img = await fetch("https://cdn.pixabay.com/photo/2017/09/01/00/15/png-2702691_1280.png");
+  const blolb = await img.blob();
+  const array_buff = await blolb.arrayBuffer();
+  return new Uint8Array(array_buff);
 }
 
 
@@ -3858,19 +3849,12 @@ async function handleRequest(request){
     if (!width){width = 1280};
     let height = new URL(request.url).searchParams.get("height");
     if (!height) {height = 851};
-    
-    const wasm_m = await wasm_wasm(fetch(wasm_bg).then(response=>response.arrayBuffer())).then(_=>{
-        return new_resizer(data,width,height);
-    });
-    console.log(`Data size ${data.length} -- ${typeof data}`);
-    const img_wasm = wasm_m.get_base64();
-    //const img_slice = convert_to_uint8_array(img_wasm);
-    //const img_slice = Uint8Array.from(window.atob(img_wasm.replace(/^data[^,]+,/,'')), v => v.charCodeAt(0));
-    //const img_blb = new Blob([rr_img],{type:"image/png"});
-    //console.log(await img.constructor.name)
-    //console.log(img_blb.constructor.name);
-    //console.log(img.constructor.name);
 
+    const wasm_m = await wasm_wasm(fetch(wasm_bg).then(response=>response.arrayBuffer())).then(_=>{
+      return new_resizer(data,width,height);
+    });
+
+    const img_wasm = wasm_m.get_base64();
     const html_content = `<!DOCTYPE html>
     <html>
       <head>
@@ -3889,24 +3873,8 @@ async function handleRequest(request){
 }
 
 addEventListener("fetch",event=>{
-    event.respondWith(handleRequest(event.request));
+  event.respondWith(handleRequest(event.request));
 });
-
-// init().then(async _=>{
-//     const img = await fetch("https://cdn.pixabay.com/photo/2017/09/01/00/15/png-2702691_1280.png");
-// 	const blolb = await img.blob();
-// 	const array_buff = await blolb.arrayBuffer();
-// 	const data = new Uint8Array(array_buff);
-//     const width = 1080;
-//     const height = 720;
-//     const res = new_resizer(data,width,height);
-//     console.log(res.get_base64());
-//     const t2 = Uint8Array.from(window.atob(res.get_base64().replace(/^data[^,]+,/,'')), v => v.charCodeAt(0));
-//     var blb = new Blob([t2],{ type: "image/png"});
-//     var imageUrl = URL.createObjectURL(blb);
-//     var page = document.querySelector("#photo");
-//     page.src = imageUrl;
-// });
 
 
 })();
