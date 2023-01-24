@@ -14,14 +14,8 @@ static ALLOC: WeeAlloc = WeeAlloc::INIT;
 //source_img: &[u8]
 pub fn new_resizer(source_img: &[u8],wdth:u32,hgth:u32)->Result<PhotonImage,JsError>{
     panic::set_hook(Box::new(console_error_panic_hook::hook));
-    log("----Entrou no rust----");
     let  content = photon_rs::native::open_image_from_bytes(source_img).unwrap();
     let resized_img = photon_rs::transform::resize(&content, wdth,hgth, photon_rs::transform::SamplingFilter::Gaussian);
     Ok(resized_img)
 }
 
-#[wasm_bindgen]
-extern "C"{
-    #[wasm_bindgen(js_namespace = console)]
-    fn log(s: &str);
-}

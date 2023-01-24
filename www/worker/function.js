@@ -3855,15 +3855,7 @@ async function handleRequest(request){
     });
 
     const img_wasm = wasm_m.get_base64();
-    const html_content = `<!DOCTYPE html>
-    <html>
-      <head>
-        <title>Display Image</title>
-      </head>
-      <body>
-        <img src='${img_wasm}'/>
-      </body>
-    </html>`;
+    const html_content = `<img src='${img_wasm}'/>`;
     return new Response(html_content,{
         headers: {
           "content-type": "text/html;charset=UTF-8",
