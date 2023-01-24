@@ -1,10 +1,30 @@
 const path = require("path");
+const webpack = require('webpack');
 
 module.exports = {
-    entry:"./bootstrap.js",
+    target:"webworker",
+    entry:"./index.js",
     output:{
-        path:path.resolve(__dirname,"public"),
-        filename:"bootstrap.js"
+      globalObject: "this",
+      filename: 'function.js',
+      path: path.resolve(__dirname, 'worker'),
     },
-    mode:"development"
+    optimization: {
+      minimize: false
+    },
+    module: {
+        rules: [
+            {
+              test: /\.wasm$/,
+              type: "asset/inline",
+            },
+        ],
+      },
+    mode:"production",
+    plugins: [
+        new webpack.optimize.LimitChunkCountPlugin({
+          maxChunks: 1,
+        }),
+    ],
+    
 }
